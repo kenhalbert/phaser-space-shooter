@@ -10,6 +10,8 @@ class Ship extends Entity {
 
   explode () {
     if (!this.getData('isDead')) {
+      this.setData('isDead', true);
+
       this.setTexture('sprExplosion');
       this.play('sprExplosion');
 
@@ -26,11 +28,9 @@ class Ship extends Entity {
       this.setAngle(0);
       this.body.setVelocity(0, 0);
 
-      this.on('animationComplete', () => {
+      this.on('animationcomplete', () => {
         this.destroy();
       });
-
-      this.setData('isDead', true);
     }
   }
 };

@@ -15,6 +15,7 @@ class ChaserShip extends Ship {
 
   update () {
     const canChase = !this.getData('isDead') 
+      && this.scene.player
       && !this.scene.player.getData('isDead');
 
     if (canChase && Phaser.Math.Distance.Between(
@@ -46,7 +47,7 @@ class ChaserShip extends Ship {
       this.body.velocity.x = 0;
     }
 
-    if (this.x < this.scene.player.x) {
+    if (this.player && this.x < this.scene.player.x) {
       this.angle -= 5;
     } else {
       this.angle += 5;

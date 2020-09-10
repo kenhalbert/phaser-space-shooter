@@ -60,6 +60,10 @@ class Player extends Ship {
       });
     }
   }
+
+  onDestroy () {
+    this.scene.player = null;
+  }
 };
 
 export default Player;

@@ -154,6 +154,8 @@ class MainScene extends Phaser.Scene {
   }
 
   killPlayer() {
+    if (!this.player) return;
+
     this.player.explode();
 
     this.time.addEvent({
@@ -167,7 +169,7 @@ class MainScene extends Phaser.Scene {
   }
 
   updatePlayer () {
-    if (this.player.getData('isDead')) return;
+    if (!this.player || this.player.getData('isDead')) return;
 
     if (this.keySpace.isDown) {
       this.player.setData('isShooting', true);
@@ -239,15 +241,6 @@ class MainScene extends Phaser.Scene {
 
       obj.destroy();
     }
-  }
-
-  getEnemiesByType (type) {
-    return this
-      .enemies
-      .children
-      .filter(
-        (c) => c.getData('type') === type
-      );
   }
 };
 
