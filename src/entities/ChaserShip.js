@@ -47,7 +47,7 @@ class ChaserShip extends Ship {
       this.body.velocity.x = 0;
     }
 
-    if (this.player && this.x < this.scene.player.x) {
+    if (this.scene.player && this.x < this.scene.player.x) {
       this.angle -= 5;
     } else {
       this.angle += 5;
